@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using log4net;
 using System.Web.Mvc;
 
 namespace MVCTraining.Controllers
 {
     public class HomeController : Controller
     {
+        private ILog m_logger;
+
+        public HomeController(ILog logger)
+        {
+            m_logger = logger;
+        }
+
         public ActionResult Index()
         {
+            m_logger.Debug("Home/Index");
             return View();
         }
 

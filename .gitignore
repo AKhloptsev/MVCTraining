@@ -1,6 +1,5 @@
 MVCTraining/obj/
 packages/
 MVCTraining/bin/
-MVCTraining.Tests/bin/Debug/SimpleInjector.Integration.Web.Mvc.xml
-MVCTraining.Tests/bin/Debug/SimpleInjector.xml
-MVCTraining.Tests/bin/Debug/log4net.xml
+MVCTraining.Tests/bin/
+MVCTraining.Tests/obj/Debug/build.force

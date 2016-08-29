@@ -1,0 +1,2 @@
+2016-08-28 19:46:13,783 [7] DEBUG RollingFileAppender [(null)] - Home/Index
+2016-08-28 19:46:13,812 [7] ERROR RollingFileAppender [(null)] - Home/Index

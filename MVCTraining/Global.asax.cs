@@ -6,6 +6,10 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System;
 using log4net;
+using MVCTraining.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+using System.Web;
 
 namespace MVCTraining
 {
@@ -20,13 +24,16 @@ namespace MVCTraining
 
             Container container = new Container();
             RegisterDependecies(container);
-            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+            
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
 
         private void RegisterDependecies(Container container)
         {
             container.RegisterSingleton<ILog>(LogManager.GetLogger("RollingFileAppender"));
+            container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            container.RegisterPerWebRequest(() => HttpContext.Current.GetOwinContext().Authentication);
+            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
         }
     }
 }

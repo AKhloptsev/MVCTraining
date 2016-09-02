@@ -3,3 +3,5 @@ packages/
 MVCTraining/bin/
 MVCTraining.Tests/bin/
 MVCTraining.Tests/obj/
+MVCTraining/App_Data/aspnet-MVCTraining.mdf
+MVCTraining/App_Data/aspnet-MVCTraining_log.ldf

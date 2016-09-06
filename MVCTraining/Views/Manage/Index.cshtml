@@ -10,6 +10,17 @@
     <h4>Change your account settings</h4>
     <hr />
     <dl class="dl-horizontal">
+        @if (Model.IsAdminUser)
+        {
+            <dt>Manage roles:</dt>
+            <dd>
+                @Html.ActionLink("Manage", "ManageRoles")
+            </dd>
+            <dt>Manage users:</dt>
+            <dd>
+                @Html.ActionLink("Manage", "ManageUsers")
+            </dd>
+        }
         <dt>Password:</dt>
         <dd>
             [

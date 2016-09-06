@@ -1,8 +1,43 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 
 namespace MVCTraining.Models
 {
+    public class RoleViewModel
+    {
+        [Required]
+        [Display(Name = "RoleName")]
+        public string Name { get; set; }
+    }
+
+    public class ManageUsersViewModel
+    {
+        [Required]
+        [Display(Name = "Id")]
+        [EmailAddress]
+        public string Id { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        [EmailAddress]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Roles")]
+        public List<IdentityUserRole> Roles { get; set; }
+
+        [Required]
+        [Display(Name = "Claims")]
+        public List<IdentityUserClaim> Claims { get; set; }
+    }
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -79,6 +114,10 @@ namespace MVCTraining.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Year")]
+        public int Year { get; set; }
     }
 
     public class ResetPasswordViewModel

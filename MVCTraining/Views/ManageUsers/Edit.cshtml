@@ -1,0 +1,64 @@
+﻿@model MVCTraining.Models.ApplicationUser
+@{
+    ViewBag.Title = "Edit user";
+}
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Roles</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+
+            @Html.LabelFor(model => model.Roles, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @foreach (var role in Model.Roles)
+                {
+                    @Html.EditorFor(model => role.RoleId)
+                    @Html.ValidationMessageFor(model => role.RoleId)
+                }
+            </div>
+
+            @Html.LabelFor(model => model.Claims, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @foreach (var claim in Model.Claims)
+                {
+                    @Html.EditorFor(model => claim.ClaimType)
+                    @Html.ValidationMessageFor(model => claim.ClaimType)
+
+                    @Html.EditorFor(model => claim.ClaimValue)
+                    @Html.ValidationMessageFor(model => claim.ClaimValue)
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "ManageUsers")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

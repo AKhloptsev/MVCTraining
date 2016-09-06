@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVCTraining.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MVCTraining.Controllers
 {
@@ -151,13 +152,23 @@ namespace MVCTraining.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // Create claim for storage birthdate
+                    var identityClaim = new IdentityUserClaim { ClaimType = "Year", ClaimValue = model.Year.ToString() };
+                    // Adding claim to user
+                    user.Claims.Add(identityClaim);
+                    // save changes
+                    await UserManager.UpdateAsync(user);
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    // TODO: Check, is user claim exists or not
+                    await UserManager.AddToRoleAsync(user.Id, "User");
 
                     return RedirectToAction("Index", "Home");
                 }

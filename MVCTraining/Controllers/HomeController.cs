@@ -1,4 +1,5 @@
 ﻿using log4net;
+using MVCTraining.Utils;
 using System.Web.Mvc;
 
 namespace MVCTraining.Controllers
@@ -12,6 +13,7 @@ namespace MVCTraining.Controllers
             m_logger = logger;
         }
 
+        [ClaimsAuthorize(Age = 10)]
         public ActionResult Index()
         {
             m_logger.Debug("Home/Index");
@@ -20,6 +22,7 @@ namespace MVCTraining.Controllers
 
         public ActionResult About()
         {
+            m_logger.Debug("Home/About");
             ViewBag.Message = "Your application description page.";
 
             return View();
@@ -27,6 +30,7 @@ namespace MVCTraining.Controllers
 
         public ActionResult Contact()
         {
+            m_logger.Debug("Home/Contact");
             ViewBag.Message = "Your contact page.";
 
             return View();

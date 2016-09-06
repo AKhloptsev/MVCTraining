@@ -7,6 +7,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVCTraining.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Net;
+using MVCTraining.Utils;
 
 namespace MVCTraining.Controllers
 {
@@ -15,11 +18,17 @@ namespace MVCTraining.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext context;
+        private UserManager<ApplicationUser> usersManager;
+        private RoleManager<IdentityRole> rolesManager;
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            context = new ApplicationDbContext();
+            usersManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            rolesManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
         }
 
         public ApplicationSignInManager SignInManager
@@ -66,8 +75,10 @@ namespace MVCTraining.Controllers
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                IsAdminUser = await UserManager.IsInRoleAsync(userId, "Admin")
             };
+
             return View(model);
         }
 
@@ -314,6 +325,24 @@ namespace MVCTraining.Controllers
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+
+        //
+        // GET: /Manage/ManageRoles
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult ManageRoles()
+        {
+            return RedirectToAction("Index", "Role");
+        }
+
+        //
+        // GET: /Manage/ManageUsers
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult ManageUsers()
+        {
+            return RedirectToAction("Index", "ManageUsers");
         }
 
         protected override void Dispose(bool disposing)

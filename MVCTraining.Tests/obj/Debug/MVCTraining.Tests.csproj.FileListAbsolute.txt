@@ -61,3 +61,5 @@ D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\log4net.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\log4net.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.Mvc.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.Mvc.xml
+D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.dll
+D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.xml

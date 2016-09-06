@@ -16,12 +16,10 @@ namespace MVCTraining.Models
     {
         [Required]
         [Display(Name = "Id")]
-        [EmailAddress]
         public string Id { get; set; }
 
         [Required]
         [Display(Name = "Name")]
-        [EmailAddress]
         public string Name { get; set; }
 
         [Required]
@@ -36,6 +34,18 @@ namespace MVCTraining.Models
         [Required]
         [Display(Name = "Claims")]
         public List<IdentityUserClaim> Claims { get; set; }
+
+        public ManageUsersViewModel(ApplicationUser user)
+        {
+            this.Claims = user.Claims as List<IdentityUserClaim>;
+            this.Roles = user.Roles as List<IdentityUserRole>;
+            this.Email = user.Email;
+            this.Name = user.UserName;
+            this.Id = user.Id;
+        }
+
+        public ManageUsersViewModel()
+        { }
     }
 
     public class ExternalLoginConfirmationViewModel

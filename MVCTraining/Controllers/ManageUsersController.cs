@@ -31,12 +31,15 @@ namespace MVCTraining.Controllers
             var users = usersManager.Users.Where((a) => !a.UserName.Equals("admin@gmail.com", StringComparison.InvariantCultureIgnoreCase));
             foreach (var user in users)
             {
-                var model = new ManageUsersViewModel();
-                model.Id = user.Id;
-                model.Name = user.UserName;
-                model.Email = user.Email;
-                model.Roles = user.Roles.ToList();
-                model.Claims = user.Claims.ToList();
+                var model = new ManageUsersViewModel
+                {
+                    Id = user.Id,
+                    Name = user.UserName,
+                    Email = user.Email,
+                    Roles = user.Roles.ToList(),
+                    Claims = user.Claims.ToList(),
+                };
+
                 models.Add(model);
             }
 
@@ -59,15 +62,16 @@ namespace MVCTraining.Controllers
             {
                 return HttpNotFound();
             }
+            var editUser = new ManageUsersViewModel(user);
 
-            return View(user);
+            return View(editUser);
         }
 
         //
         // POST: /ManageUsers/Edit/User
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(ApplicationUser user)
+        public async Task<ActionResult> Edit(ManageUsersViewModel user)
         {
             if (ModelState.IsValid)
             {

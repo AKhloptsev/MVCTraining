@@ -22,10 +22,10 @@ namespace MVCTraining.Models
             return userIdentity;
         }
 
-        public static async Task<IdentityResult> UpdateApplicationUser(UserManager<ApplicationUser> manager, ApplicationUser user)
+        public static async Task<IdentityResult> UpdateApplicationUser(UserManager<ApplicationUser> manager, ManageUsersViewModel user)
         {
             var oldUser = await manager.FindByIdAsync(user.Id);
-            oldUser.UserName = user.UserName;
+            oldUser.UserName = user.Name;
             oldUser.Email = user.Email;
 
             // remove old roles

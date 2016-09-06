@@ -62,6 +62,7 @@ namespace MVCTraining.Controllers
             {
                 return HttpNotFound();
             }
+
             var editUser = new ManageUsersViewModel(user);
 
             return View(editUser);
@@ -75,14 +76,14 @@ namespace MVCTraining.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await ApplicationUser.UpdateApplicationUser(usersManager, user);
+                var result = await ApplicationUser.UpdateApplicationUser(usersManager, rolesManager, user);
                 if (!result.Succeeded)
                 {
                     ModelState.AddModelError("", result.Errors.First().ToString());
                     return View();
                 }
 
-                return RedirectToAction("ManageUsers");
+                return RedirectToAction("Index", "ManageUsers");
             }
             else
             {

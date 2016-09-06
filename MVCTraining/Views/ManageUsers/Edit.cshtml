@@ -26,24 +26,27 @@
                 </div>
             </div>
             <div class="form-group">
-                @foreach (var role in Model.Roles)
+                @for (int i = 0; i < Model.Roles.Count; i++)
                 {
-                    @Html.LabelFor(m => role.RoleId, new { @class = "col-md-2 control-label" })
+                    @Html.HiddenFor(m => m.Roles[i].UserId)
+                    @Html.LabelFor(m => m.Roles[i].RoleId, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => role.RoleId, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Roles[i].RoleId, new { @class = "form-control" })
                     </div>
                 }
             </div>
             <div class="form-group">
-                @foreach (var claim in Model.Claims)
+                @for (int i = 0; i < Model.Claims.Count; i++)
                 {
-                    @Html.LabelFor(m => claim.ClaimType, new { @class = "col-md-2 control-label" })
+                    @Html.HiddenFor(m => m.Claims[i].Id)
+                    @Html.HiddenFor(m => m.Claims[i].UserId)
+                    @Html.LabelFor(m => m.Claims[i].ClaimType, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => claim.ClaimType, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Claims[i].ClaimType, new { @class = "form-control" })
                     </div>
-                    @Html.LabelFor(m => claim.ClaimValue, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.Claims[i].ClaimValue, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => claim.ClaimValue, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Claims[i].ClaimValue, new { @class = "form-control" })
                     </div>
                 }
             </div>

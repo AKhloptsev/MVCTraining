@@ -22,35 +22,39 @@ namespace MVCTraining.Models
             return userIdentity;
         }
 
-        public static async Task<IdentityResult> UpdateApplicationUser(UserManager<ApplicationUser> manager, ManageUsersViewModel user)
+        public static async Task<IdentityResult> UpdateApplicationUser(UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> rolesManager, 
+            ManageUsersViewModel user)
         {
-            var oldUser = await manager.FindByIdAsync(user.Id);
+            var oldUser = await userManager.FindByIdAsync(user.Id);
             oldUser.UserName = user.Name;
             oldUser.Email = user.Email;
 
             // remove old roles
-            var roles = await manager.GetRolesAsync(oldUser.Id);
-            await manager.RemoveFromRolesAsync(oldUser.Id, roles.ToArray());
+            var roles = await userManager.GetRolesAsync(oldUser.Id);
+            await userManager.RemoveFromRolesAsync(oldUser.Id, roles.ToArray());
 
             // add new roles
-            roles = await manager.GetRolesAsync(user.Id);
-            await manager.AddToRolesAsync(oldUser.Id, roles.ToArray());
+            foreach (var role in user.Roles)
+            {
+                var currentRole = await rolesManager.FindByIdAsync(role.RoleId);
+                await userManager.AddToRolesAsync(oldUser.Id, currentRole.Name);
+            }
 
             // remove old claims
-            var claims = await manager.GetClaimsAsync(oldUser.Id);
+            var claims = await userManager.GetClaimsAsync(oldUser.Id);
             foreach (var claim in claims)
             {
-                await manager.RemoveClaimAsync(oldUser.Id, claim);
+                await userManager.RemoveClaimAsync(oldUser.Id, claim);
             }
 
             // add new claims
-            claims = await manager.GetClaimsAsync(user.Id);
-            foreach (var claim in claims)
+            foreach (var claim in user.Claims)
             {
-                await manager.AddClaimAsync(oldUser.Id, claim);
+                oldUser.Claims.Add(claim);
             }
 
-            var result = await manager.UpdateAsync(oldUser);
+            var result = await userManager.UpdateAsync(oldUser);
 
             return result;
         }

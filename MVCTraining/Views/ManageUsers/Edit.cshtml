@@ -28,10 +28,9 @@
             <div class="form-group">
                 @for (int i = 0; i < Model.Roles.Count; i++)
                 {
-                    @Html.HiddenFor(m => m.Roles[i].UserId)
-                    @Html.LabelFor(m => m.Roles[i].RoleId, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.Roles[i], new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Roles[i].RoleId, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Roles[i], new { @class = "form-control" })
                     </div>
                 }
             </div>
@@ -66,38 +65,3 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-
-
-@*@Html.LabelFor(model => model.Name, new { @class = "control-label" })
-    <div>
-        @Html.EditorFor(model => model.Name)
-        @Html.ValidationMessageFor(model => model.Name)
-    </div>
-
-    @Html.LabelFor(model => model.Email, new { @class = "control-label" })
-    <div>
-        @Html.EditorFor(model => model.Email)
-        @Html.ValidationMessageFor(model => model.Email)
-    </div>
-
-    @Html.LabelFor(model => model.Roles, new { @class = "control-label" })
-    <div>
-        @foreach (var role in Model.Roles)
-        {
-            @Html.EditorFor(model => role.RoleId)
-            @Html.ValidationMessageFor(model => role.RoleId)
-        }
-    </div>
-
-    @Html.LabelFor(model => model.Claims, new { @class = "control-label" })
-    <div>
-        @foreach (var claim in Model.Claims)
-        {
-            @Html.EditorFor(model => claim.ClaimType)
-            @Html.ValidationMessageFor(model => claim.ClaimType)
-
-            @Html.EditorFor(model => claim.ClaimValue)
-            @Html.ValidationMessageFor(model => claim.ClaimValue)
-        }
-    </div>*@

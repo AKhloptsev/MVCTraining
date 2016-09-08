@@ -36,9 +36,9 @@ namespace MVCTraining.Controllers
                     Id = user.Id,
                     Name = user.UserName,
                     Email = user.Email,
-                    Roles = user.Roles.ToList(),
-                    Claims = user.Claims.ToList(),
-                };
+                    Roles = usersManager.GetRoles(user.Id).ToList(),
+                    Claims = user.Claims.ToList()
+            };
 
                 models.Add(model);
             }
@@ -63,7 +63,9 @@ namespace MVCTraining.Controllers
                 return HttpNotFound();
             }
 
-            var editUser = new ManageUsersViewModel(user);
+            var userRoles = await usersManager.GetRolesAsync(user.Id);
+
+            var editUser = new ManageUsersViewModel(user, userRoles.ToList());
 
             return View(editUser);
         }

@@ -24,6 +24,7 @@ D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\System.Web.Razor.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\System.Web.WebPages.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\log4net.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.Owin.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\System.Web.Optimization.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
@@ -32,7 +33,10 @@ D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.Owin.Security.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Owin.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\EntityFramework.dll
+D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.Mvc.dll
+D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\MVCTraining.pdb
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
@@ -43,6 +47,7 @@ D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\System.Web.Razor.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\System.Web.WebPages.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\log4net.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.Owin.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\System.Web.Optimization.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
@@ -50,16 +55,11 @@ D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.Owin.Security.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\EntityFramework.xml
+D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.Mvc.xml
+D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.xml
 D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
 D:\C#\MVCTraining\MVCTraining.Tests\obj\Debug\MVCTraining.Tests.csprojResolveAssemblyReference.cache
 D:\C#\MVCTraining\MVCTraining.Tests\obj\Debug\MVCTraining.Tests.dll
 D:\C#\MVCTraining\MVCTraining.Tests\obj\Debug\MVCTraining.Tests.pdb
-D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.dll
-D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.xml
-D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\log4net.dll
-D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\log4net.xml
-D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.Mvc.dll
-D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.Mvc.xml
-D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.dll
-D:\C#\MVCTraining\MVCTraining.Tests\bin\Debug\SimpleInjector.Integration.Web.xml

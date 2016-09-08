@@ -13,7 +13,7 @@ namespace MVCTraining.Controllers
             m_logger = logger;
         }
 
-        [ClaimsAuthorize(Age = 10)]
+        [ClaimsAuthorize(Age = 20)]
         public ActionResult Index()
         {
             m_logger.Debug("Home/Index");

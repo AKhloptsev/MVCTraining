@@ -16,7 +16,7 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Roles[0].RoleId)
+            @Html.DisplayNameFor(model => model.Roles)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Claims[0].ClaimType)
@@ -43,7 +43,7 @@
             <td>
                 @foreach (var role in item.Roles)
                 {
-                    @Html.DisplayFor(modelItem => role.RoleId)
+                    @Html.DisplayFor(modelItem => role)
                     <br />
                 }
             </td>

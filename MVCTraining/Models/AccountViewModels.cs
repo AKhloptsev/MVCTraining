@@ -28,20 +28,19 @@ namespace MVCTraining.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Roles")]
-        public List<IdentityUserRole> Roles { get; set; }
-
-        [Required]
         [Display(Name = "Claims")]
         public List<IdentityUserClaim> Claims { get; set; }
 
-        public ManageUsersViewModel(ApplicationUser user)
+        [Display(Name = "Roles")]
+        public List<string> Roles { get; set; }
+
+        public ManageUsersViewModel(ApplicationUser user, List<string> userRoles)
         {
             this.Claims = user.Claims as List<IdentityUserClaim>;
-            this.Roles = user.Roles as List<IdentityUserRole>;
             this.Email = user.Email;
             this.Name = user.UserName;
             this.Id = user.Id;
+            this.Roles = userRoles;
         }
 
         public ManageUsersViewModel()

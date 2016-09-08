@@ -37,7 +37,7 @@ namespace MVCTraining.Models
             // add new roles
             foreach (var role in user.Roles)
             {
-                var currentRole = await rolesManager.FindByIdAsync(role.RoleId);
+                var currentRole = await rolesManager.FindByNameAsync(role);
                 await userManager.AddToRolesAsync(oldUser.Id, currentRole.Name);
             }
 

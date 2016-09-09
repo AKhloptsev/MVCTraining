@@ -38,7 +38,7 @@ namespace MVCTraining.Controllers
                     Email = user.Email,
                     Roles = usersManager.GetRoles(user.Id).ToList(),
                     Claims = user.Claims.ToList()
-            };
+                };
 
                 models.Add(model);
             }
@@ -64,8 +64,23 @@ namespace MVCTraining.Controllers
             }
 
             var userRoles = await usersManager.GetRolesAsync(user.Id);
+            var allRolesIdentity = rolesManager.Roles.ToList().Where(x => !x.Name.Equals("Admin"));
+            var allRoles = allRolesIdentity
+                .Select(c => new
+                {
+                    RoleId = c.Id,
+                    RoleName = c.Name
+                })
+                .ToList();
 
-            var editUser = new ManageUsersViewModel(user, userRoles.ToList());
+            var roleIds = from allRole in allRoles
+                          from userRole in userRoles
+                          where allRole.RoleName.Equals(userRole)
+                          select allRole.RoleId;
+
+            var selectList = new MultiSelectList(allRoles, "RoleId", "RoleName", roleIds.ToList());
+
+            var editUser = new ManageUsersViewModel(user, userRoles.ToList(), selectList, roleIds.ToList());
 
             return View(editUser);
         }

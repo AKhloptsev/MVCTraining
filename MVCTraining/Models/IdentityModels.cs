@@ -35,9 +35,9 @@ namespace MVCTraining.Models
             await userManager.RemoveFromRolesAsync(oldUser.Id, roles.ToArray());
 
             // add new roles
-            foreach (var role in user.Roles)
+            foreach (var roleId in user.RoleId)
             {
-                var currentRole = await rolesManager.FindByNameAsync(role);
+                var currentRole = await rolesManager.FindByIdAsync(roleId);
                 await userManager.AddToRolesAsync(oldUser.Id, currentRole.Name);
             }
 

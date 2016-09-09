@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
+using System.Web.Mvc;
 
 namespace MVCTraining.Models
 {
@@ -31,16 +32,22 @@ namespace MVCTraining.Models
         [Display(Name = "Claims")]
         public List<IdentityUserClaim> Claims { get; set; }
 
-        [Display(Name = "Roles")]
+        [Display(Name = "User Roles")]
         public List<string> Roles { get; set; }
 
-        public ManageUsersViewModel(ApplicationUser user, List<string> userRoles)
+        public List<string> RoleId { get; set; }
+
+        public MultiSelectList AllRoles { get; set; }
+
+        public ManageUsersViewModel(ApplicationUser user, List<string> userRoles, MultiSelectList allRoles, List<string> roleIds)
         {
             this.Claims = user.Claims as List<IdentityUserClaim>;
             this.Email = user.Email;
             this.Name = user.UserName;
             this.Id = user.Id;
             this.Roles = userRoles;
+            this.AllRoles = allRoles;
+            this.RoleId = roleIds;
         }
 
         public ManageUsersViewModel()
@@ -121,7 +128,7 @@ namespace MVCTraining.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         [Required]
@@ -144,7 +151,7 @@ namespace MVCTraining.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

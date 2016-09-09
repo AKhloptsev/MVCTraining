@@ -26,13 +26,10 @@
                 </div>
             </div>
             <div class="form-group">
-                @for (int i = 0; i < Model.Roles.Count; i++)
-                {
-                    @Html.LabelFor(m => m.Roles[i], new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Roles[i], new { @class = "form-control" })
-                    </div>
-                }
+                @Html.LabelFor(m => m.Roles, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.RoleId, Model.AllRoles, new { multiple = "multiple" })
+                </div>
             </div>
             <div class="form-group">
                 @for (int i = 0; i < Model.Claims.Count; i++)
